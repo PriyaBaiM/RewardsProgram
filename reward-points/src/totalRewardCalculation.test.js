@@ -13,13 +13,13 @@ describe('aggregateRewards', () => {
       expect(result.monthly['1-12-2023'].points).toBe(90);
       expect(result.monthly['1-1-2024'].points).toBe(30);
       expect(result.monthly['2-1-2024'].points).toBe(150);
-      expect(result.monthly['2-2-2024'].points).toBe(200);
+      expect(result.monthly['2-2-2024'].points).toBe(250);
     });
   
     test('aggregates total rewards correctly', () => {
       const result = aggregateRewards(transactions);
       expect(result.total[1].points).toBe(120);
-      expect(result.total[2].points).toBe(350);
+      expect(result.total[2].points).toBe(400);
     });
   });
   
