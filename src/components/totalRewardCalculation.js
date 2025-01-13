@@ -1,4 +1,4 @@
-import calculateRewards from './rewardCalculation';
+import calculateRewards from '../utils/helpers';
 import logger from 'react-logger'; 
 
 const formatDate = (date) => {

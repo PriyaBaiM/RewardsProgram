@@ -1,4 +1,4 @@
-import calculateRewards from "./rewardCalculation";
+import calculateRewards from "../../utils/helpers";
 
 describe('calculateRewards', () => {
     test('calculates rewards correctly for price over $100', () => {

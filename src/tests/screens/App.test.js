@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import App from './App';
+import App from '../../screens/App';
 
 const dataTransactions = [
   { id: 1, customerId: 1, name: 'David', date: '2023-12-15', product: 'Laptop', price: 120.2 },

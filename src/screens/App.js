@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import calculateRewards from './rewardCalculation'; 
-import aggregateRewards from './totalRewardCalculation';
-import dataTransactions from './data';
+import calculateRewards from '../utils/helpers'; 
+import aggregateRewards from '../components/totalRewardCalculation';
+import dataTransactions from '../public/data';
 import logger from 'react-logger'; 
-import './App.css'
+import '../styles/App.css'
 
 const App = () => {
   const [transactions, setTransactions] = useState([]);
