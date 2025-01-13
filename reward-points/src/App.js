@@ -12,14 +12,18 @@ const App = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Simulate an asynchronous API call
     const fetchData = async () => {
       try {
-        // Simulate delay
         await new Promise((resolve) => setTimeout(resolve, 1000));
-        setTransactions(dataTransactions);
+        if (dataTransactions) {
+          setTransactions(dataTransactions);
+          this.log('info', 'Transactions fetched successfully');
+        } else {
+          throw new Error('No transactions data available');
+        }
       } catch (err) {
         setError('Failed to fetch transactions');
+        this.log('error', 'Failed to fetch transactions');
       } finally {
         setLoading(false);
       }
@@ -32,6 +36,7 @@ const App = () => {
       const rewardsData = aggregateRewards(transactions);
       setMonthlyRewards(Object.values(rewardsData.monthly));
       setTotalRewards(Object.values(rewardsData.total));
+      this.log('info', 'Rewards data aggregated');
     }
   }, [transactions]);
 
