@@ -1,3 +1,5 @@
+import logger from 'react-logger'; 
+
 const calculateRewards = (price) => {
     let points = 0;
     if (price > 100) {
@@ -7,6 +9,9 @@ const calculateRewards = (price) => {
     if (price > 50) {
       points += (price - 50) * 1;
     }
+
+    logger.log('info', `Calculated ${points} reward points for price ${price}`);
+
     return Math.floor(points);
   };
   

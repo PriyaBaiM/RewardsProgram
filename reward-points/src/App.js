@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import calculateRewards from './rewardCalculation'; 
 import aggregateRewards from './totalRewardCalculation';
 import dataTransactions from './data';
+import logger from 'react-logger'; 
+import './App.css'
 
 const App = () => {
   const [transactions, setTransactions] = useState([]);
@@ -17,13 +19,13 @@ const App = () => {
         await new Promise((resolve) => setTimeout(resolve, 1000));
         if (dataTransactions) {
           setTransactions(dataTransactions);
-          this.log('info', 'Transactions fetched successfully');
+          logger.log('info', 'Transactions fetched successfully');
         } else {
           throw new Error('No transactions data available');
         }
       } catch (err) {
         setError('Failed to fetch transactions');
-        this.log('error', 'Failed to fetch transactions');
+        logger.log('error', 'Failed to fetch transactions');
       } finally {
         setLoading(false);
       }
@@ -36,7 +38,7 @@ const App = () => {
       const rewardsData = aggregateRewards(transactions);
       setMonthlyRewards(Object.values(rewardsData.monthly));
       setTotalRewards(Object.values(rewardsData.total));
-      this.log('info', 'Rewards data aggregated');
+      logger.log('info', 'Rewards data aggregated');
     }
   }, [transactions]);
 
