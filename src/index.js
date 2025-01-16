@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/index.css';
-import App from './screens/App';
+import App from './rewardsScreen/Driver';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
