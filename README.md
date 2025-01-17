@@ -1,3 +1,51 @@
+Rewards Program
+
+Project Overview
+
+This project is a React application that calculates and displays reward points earned by customers based on their transactions. The application includes features such as filtering transactions by month and displaying total rewards for the most recent transactions.
+
+Approach
+
+Data Fetching: Simulate an asynchronous API call to fetch transaction data.
+Reward Calculation: Calculate reward points based on the transaction amount.
+Aggregation: Aggregate reward points by month and year, and calculate total rewards for the most recent transactions.
+Filtering: Provide a filter to view monthly rewards based on the selected month.
+Styling: Style the application for a better user experience.
+Error Handling: Gracefully handle errors during data fetching and processing.
+Testing: Write unit tests using Jest to ensure the correctness of the utility functions and components.
+
+Components
+
+NavBar: Navigation bar to switch between different views (Transactions, Monthly Rewards, Total Rewards).
+TransactionsTable: Displays the list of transactions.
+MonthlyRewardsTable: Displays the monthly rewards with a filter to select the month.
+TotalRewardsTable: Displays the total rewards for the most recent transactions.
+
+Utility Functions
+
+Helpers.js: Contains functions to calculate rewards, aggregate monthly rewards, and aggregate total rewards.
+DateUtils.js: Contains a function to convert month numbers to month names.
+
+Screenshots
+Transactions View
+
+![alt text](image.png)
+
+Monthly Rewards View
+
+![alt text](image-1.png)
+
+Total Rewards View
+
+![alt text](image-2.png)
+
+Loading Scenario
+
+Error Scenario
+![alt text](image-3.png)
+
+Running the Application
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
