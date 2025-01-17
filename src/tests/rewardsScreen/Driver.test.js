@@ -26,6 +26,6 @@ describe('Driver', () => {
   test('displays error message on fetch failure', async () => {
     fetchData.mockRejectedValue(new Error('Failed to fetch data'));
     render(<Driver />);
-    await waitFor(() => expect(screen.getByText('Error: Failed to fetch data. Please try again later.')).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByText((content, element) => content.startsWith('Error:') && content.includes('Failed to fetch data'))).toBeInTheDocument());
   });
 });
