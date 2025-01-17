@@ -4,7 +4,7 @@ import TransactionsTable from '../components/TransactionsTable';
 import MonthlyRewardsTable from '../components/MonthlyRewardsTable';
 import TotalRewardsTable from '../components/TotalRewardsTable';
 import NavBar from '../components/NavBar';
-import { calculateRewards, aggregateMonthlyRewards, aggregateTotalRewards } from '../utils/helpers';
+import { calculateRewards, aggregateMonthlyRewards, aggregateTotalRewards } from '../utils/Helpers';
 import '../styles/App.css';
 import log from 'loglevel';
 
