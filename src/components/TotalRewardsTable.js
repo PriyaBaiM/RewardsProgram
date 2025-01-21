@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const TotalRewardsTable = ({ totalRewards }) => (
 
   <div>
-    <h2>Total Rewards</h2>
+    <h2>Total Rewards [For last three consecutive months ]</h2>
     <table>
       <thead>
         <tr>

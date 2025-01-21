@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchData } from '../services/ApiService';
+import { fetchData } from '../utils/services/ApiService';
 import TransactionsTable from '../components/TransactionsTable';
 import MonthlyRewardsTable from '../components/MonthlyRewardsTable';
 import TotalRewardsTable from '../components/TotalRewardsTable';

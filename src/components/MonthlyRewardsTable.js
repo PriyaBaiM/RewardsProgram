@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { getMonthName } from '../utils/DateUtils';
+import { getMonthName } from '../utils/Helpers';
 
 const MonthlyRewardsTable = ({ monthlyRewards }) => {
   const [selectedMonth, setSelectedMonth] = useState('');

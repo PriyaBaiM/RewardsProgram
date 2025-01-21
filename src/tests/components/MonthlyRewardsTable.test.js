@@ -1,9 +1,9 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import MonthlyRewardsTable from '../../components/MonthlyRewardsTable';
-import { getMonthName } from '../../utils/DateUtils';
+import { getMonthName } from '../../utils/Helpers';
 
-jest.mock('../../utils/DateUtils', () => ({
+jest.mock('../../utils/Helpers', () => ({
   getMonthName: jest.fn(),
 }));
 

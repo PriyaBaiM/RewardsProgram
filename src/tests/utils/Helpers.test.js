@@ -1,4 +1,4 @@
-import { calculateRewards, aggregateMonthlyRewards ,aggregateTotalRewards} from "../../utils/Helpers";
+import { calculateRewards, aggregateMonthlyRewards ,aggregateTotalRewards ,getMonthName} from "../../utils/Helpers";
 
 describe('calculateRewards', () => {
   test('calculates reward points correctly for prices over 100', () => {
@@ -46,3 +46,23 @@ describe('aggregateTotalRewards', () => {
     expect(result[0].points).toBe(550); // Sum of the last three transactions
   });
 });
+
+describe('getMonthName', () => {
+  test('returns correct month name for January', () => {
+    expect(getMonthName(1)).toBe('January');
+  });
+
+  test('returns correct month name for December', () => {
+    expect(getMonthName(12)).toBe('December');
+  });
+
+  test('returns correct month name for a middle month', () => {
+    expect(getMonthName(6)).toBe('June');
+  });
+
+  test('handles invalid month numbers gracefully', () => {
+    expect(getMonthName(0)).toBe('December'); // December of the previous year
+    expect(getMonthName(13)).toBe('January'); // January of the next year
+  });
+});
+

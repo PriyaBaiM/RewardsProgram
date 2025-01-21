@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const { fetchData } = require('../../services/ApiService');
+const { fetchData } = require('../../../utils/services/ApiService');
 const log = require('loglevel');
 
 jest.mock('node-fetch');

@@ -10,7 +10,7 @@ const mockRewards = [
 describe('TotalRewardsTable', () => {
   test('renders without crashing', () => {
     render(<TotalRewardsTable totalRewards={mockRewards} />);
-    expect(screen.getByText('Total Rewards')).toBeInTheDocument();
+    expect(screen.getByText('Total Rewards [For last three consecutive months ]')).toBeInTheDocument();
   });
 
   test('displays total rewards correctly', () => {

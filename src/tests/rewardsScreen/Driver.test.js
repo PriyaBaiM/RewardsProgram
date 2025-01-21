@@ -1,10 +1,10 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import Driver from '../../rewardsScreen/Driver';
-import { fetchData } from '../../services/ApiService';
+import { fetchData } from '../../utils/services/ApiService';
 import log from 'loglevel';
 
-jest.mock('../../services/ApiService');
+jest.mock('../../utils/services/ApiService');
 jest.mock('loglevel');
 
 const mockData = [
