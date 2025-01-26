@@ -44,7 +44,7 @@ const MonthlyRewardsTable = ({ monthlyRewards }) => {
               <td>{reward.name}</td>
               <td>{getMonthName(reward.month)}</td>
               <td>{reward.year}</td>
-              <td>{reward.points}</td>
+              <td style={{ textAlign: 'right' }}>{reward.points.toFixed(2)}</td>
             </tr>
           ))}
         </tbody>

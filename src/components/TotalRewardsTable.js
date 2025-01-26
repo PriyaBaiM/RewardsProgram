@@ -16,7 +16,7 @@ const TotalRewardsTable = ({ totalRewards }) => (
         {totalRewards.map((reward, index) => (
           <tr key={index}>
             <td>{reward.name}</td>
-            <td>{reward.points}</td>
+            <td style={{ textAlign: 'right' }}>{reward.points.toFixed(2)}</td>
           </tr>
         ))}
       </tbody>

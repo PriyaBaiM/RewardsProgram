@@ -22,8 +22,8 @@ const TransactionsTable = ({ transactions }) => (
             <td>{transaction.name}</td>
             <td>{transaction.date}</td>
             <td>{transaction.product}</td>
-            <td>{transaction.price}</td>
-            <td>{transaction.rewardPoints}</td>
+            <td style={{ textAlign: 'right' }}>{transaction.price.toFixed(2)}</td>
+            <td style={{ textAlign: 'right' }}>{transaction.rewardPoints.toFixed(2)}</td>
           </tr>
         ))}
       </tbody>

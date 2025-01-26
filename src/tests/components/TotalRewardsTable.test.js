@@ -3,8 +3,8 @@ import { render, screen } from '@testing-library/react';
 import TotalRewardsTable from '../../components/TotalRewardsTable';
 
 const mockRewards = [
-  { name: 'Alice', points: 100 },
-  { name: 'Bob', points: 200 },
+  { name: 'Alice', points: 100.00 },
+  { name: 'Bob', points: 200.00 },
 ];
 
 describe('TotalRewardsTable', () => {
@@ -16,8 +16,8 @@ describe('TotalRewardsTable', () => {
   test('displays total rewards correctly', () => {
     render(<TotalRewardsTable totalRewards={mockRewards} />);
     expect(screen.getByText('Alice')).toBeInTheDocument();
-    expect(screen.getByText('100')).toBeInTheDocument();
+    expect(screen.getByText('100.00')).toBeInTheDocument();
     expect(screen.getByText('Bob')).toBeInTheDocument();
-    expect(screen.getByText('200')).toBeInTheDocument();
+    expect(screen.getByText('200.00')).toBeInTheDocument();
   });
 });

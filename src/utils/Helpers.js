@@ -2,11 +2,13 @@ export const calculateRewards = (transactions) => {
   return transactions.map(transaction => {
     const { price } = transaction;
     let points = 0;
+    if (!isNaN(price)) {
     if (price > 100) {
       points = Math.floor(2 * (price - 100) + 50);
     } else if (price > 50) {
       points = Math.floor(price - 50);
     }
+  }
     return { ...transaction, rewardPoints: points };
   });
 };
