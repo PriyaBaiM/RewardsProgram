@@ -2,34 +2,39 @@ import { calculateRewards, aggregateMonthlyRewards ,aggregateTotalRewards ,getMo
 
 describe('calculateRewards', () => {
   test('calculates reward points correctly for prices over 100', () => {
-    const transactions = [{ price: 150 }];
+    const transactions = [{ price: 150.00 }];
     const result = calculateRewards(transactions);
-    expect(result[0].rewardPoints).toBe(150);
+    expect(result[0].rewardPoints).toBe(150.00);
   });
 
   test('calculates reward points correctly for prices between 50 and 100', () => {
-    const transactions = [{ price: 75 }];
+    const transactions = [{ price: 75.00 }];
     const result = calculateRewards(transactions);
-    expect(result[0].rewardPoints).toBe(25);
+    expect(result[0].rewardPoints).toBe(25.00);
   });
 
   test('calculates reward points as 0 for prices 50 or below', () => {
-    const transactions = [{ price: 50 }];
+    const transactions = [{ price: 50.00 }];
     const result = calculateRewards(transactions);
-    expect(result[0].rewardPoints).toBe(0);
+    expect(result[0].rewardPoints).toBe(0.00);
   });
 });
 
 describe('aggregateMonthlyRewards', () => {
-  test('aggregates rewards correctly by month and year', () => {
+  test('aggregates rewards correctly by month and year for the last three transactions', () => {
     const transactions = [
-      { customerId: '1', name: 'Alice', rewardPoints: 100, date: '2023-01-01' },
-      { customerId: '1', name: 'Alice', rewardPoints: 50, date: '2023-01-15' },
-      { customerId: '2', name: 'Bob', rewardPoints: 200, date: '2023-02-01' },
+      { customerId: '1', name: 'Alice', rewardPoints: 100.00, date: '2023-01-01' },
+      { customerId: '1', name: 'Alice', rewardPoints: 50.00, date: '2023-01-15' },
+      { customerId: '1', name: 'Alice', rewardPoints: 30.00, date: '2023-01-20' },
+      { customerId: '1', name: 'Alice', rewardPoints: 20.00, date: '2023-01-25' },
+      { customerId: '2', name: 'Bob', rewardPoints: 200.00, date: '2023-02-01' },
+      { customerId: '2', name: 'Bob', rewardPoints: 150.00, date: '2023-02-10' },
+      { customerId: '2', name: 'Bob', rewardPoints: 100.00, date: '2023-02-15' },
+      { customerId: '2', name: 'Bob', rewardPoints: 50.00, date: '2023-02-20' },
     ];
     const result = aggregateMonthlyRewards(transactions);
-    expect(result['1-1-2023'].points).toBe(150);
-    expect(result['2-2-2023'].points).toBe(200);
+    expect(result.find(r => r.customerId === 1 && r.month === 1 && r.year === 2023).points).toBe(100.00);
+    expect(result.find(r => r.customerId === 2 && r.month === 2 && r.year === 2023).points).toBe(300.00);
   });
 });
 

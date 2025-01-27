@@ -8,8 +8,8 @@ jest.mock('../../utils/Helpers', () => ({
 }));
 
 const mockRewards = [
-  { customerId: '1', name: 'Alice', month: 1, year: 2023, points: 100 },
-  { customerId: '2', name: 'Bob', month: 2, year: 2023, points: 200 },
+  { customerId: '1', name: 'Alice', month: 1, year: 2023, points: 100.00 },
+  { customerId: '2', name: 'Bob', month: 2, year: 2023, points: 200.00 },
 ];
 
 describe('MonthlyRewardsTable', () => {
