@@ -29,15 +29,15 @@ DateUtils.js: Contains a function to convert month numbers to month names.
 Screenshots
 Transactions View
 
-![alt text](image.png)
+![alt text](image-4.png)
 
 Monthly Rewards View
 
-![alt text](image-1.png)
+![alt text](image.png)
 
 Total Rewards View
 
-![alt text](image-2.png)
+![alt text](image-1.png)
 
 Loading Scenario
 

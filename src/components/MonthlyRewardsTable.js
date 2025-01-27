@@ -4,14 +4,27 @@ import { getMonthName } from '../utils/Helpers';
 
 const MonthlyRewardsTable = ({ monthlyRewards }) => {
   const [selectedMonth, setSelectedMonth] = useState('');
+  const [sortOrder, setSortOrder] = useState('asc');
 
   const handleMonthChange = (event) => {
     setSelectedMonth(event.target.value);
   };
 
+  const handleSort = () => {
+    setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+  };
+
   const filteredRewards = selectedMonth
     ? monthlyRewards.filter(reward => getMonthName(reward.month) === selectedMonth)
     : monthlyRewards;
+
+  const sortedRewards = filteredRewards.sort((a, b) => {
+    if (sortOrder === 'asc') {
+      return a.name.localeCompare(b.name);
+    } else {
+      return b.name.localeCompare(a.name);
+    }
+  });
 
   const uniqueMonths = [...new Set(monthlyRewards.map(reward => getMonthName(reward.month)))];
 
@@ -31,14 +44,14 @@ const MonthlyRewardsTable = ({ monthlyRewards }) => {
         <thead>
           <tr>
             <th>Customer ID</th>
-            <th>Name</th>
+            <th onClick={handleSort} style={{ cursor: 'pointer' }}>Name</th>
             <th>Month</th>
             <th>Year</th>
             <th>Reward Points</th>
           </tr>
         </thead>
         <tbody>
-          {filteredRewards.map((reward, index) => (
+          {sortedRewards.map((reward, index) => (
             <tr key={index}>
               <td>{reward.customerId}</td>
               <td>{reward.name}</td>
@@ -54,7 +67,14 @@ const MonthlyRewardsTable = ({ monthlyRewards }) => {
 };
 
 MonthlyRewardsTable.propTypes = {
-  monthlyRewards: PropTypes.arrayOf(PropTypes.object).isRequired,
+  monthlyRewards: PropTypes.arrayOf(PropTypes.shape({
+    customerId: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    month: PropTypes.number.isRequired,
+    year: PropTypes.number.isRequired,
+    points: PropTypes.number.isRequired,
+    currency: PropTypes.string.isRequired,
+  })).isRequired,
 };
 
 export default MonthlyRewardsTable;

@@ -3,10 +3,23 @@ import PropTypes from 'prop-types';
 
 const TransactionsTable = ({ transactions }) => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [sortOrder, setSortOrder] = useState('asc');
+
+  const handleSort = () => {
+    setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+  };
 
   const filteredTransactions = transactions.filter(transaction =>
     transaction.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const sortedTransactions = filteredTransactions.sort((a, b) => {
+    if (sortOrder === 'asc') {
+      return a.name.localeCompare(b.name);
+    } else {
+      return b.name.localeCompare(a.name);
+    }
+  });
 
   return (
     <div>
@@ -25,7 +38,7 @@ const TransactionsTable = ({ transactions }) => {
         <thead>
           <tr>
             <th>Transaction ID</th>
-            <th>Customer Name</th>
+            <th onClick={handleSort} style={{ cursor: 'pointer' }}>Customer Name</th>
             <th>Purchase Date</th>
             <th>Product Purchased</th>
             <th>Price</th>
@@ -33,7 +46,7 @@ const TransactionsTable = ({ transactions }) => {
           </tr>
         </thead>
         <tbody>
-          {filteredTransactions.map(transaction => (
+          {sortedTransactions.map(transaction => (
             <tr key={transaction.id}>
               <td>{transaction.id}</td>
               <td>{transaction.name}</td>
@@ -50,7 +63,15 @@ const TransactionsTable = ({ transactions }) => {
 };
 
 TransactionsTable.propTypes = {
-  transactions: PropTypes.arrayOf(PropTypes.object).isRequired,
+  transactions: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    product: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    rewardPoints: PropTypes.number.isRequired,
+    currency: PropTypes.string.isRequired,
+  })).isRequired,
 };
 
 export default TransactionsTable;

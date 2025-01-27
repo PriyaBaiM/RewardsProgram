@@ -3,10 +3,23 @@ import PropTypes from 'prop-types';
 
 const TotalRewardsTable = ({ totalRewards }) => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [sortOrder, setSortOrder] = useState('asc');
+
+  const handleSort = () => {
+    setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+  };
 
   const filteredRewards = totalRewards.filter(reward =>
     reward.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const sortedRewards = filteredRewards.sort((a, b) => {
+    if (sortOrder === 'asc') {
+      return a.name.localeCompare(b.name);
+    } else {
+      return b.name.localeCompare(a.name);
+    }
+  });
 
   return (
     <div>
@@ -24,12 +37,12 @@ const TotalRewardsTable = ({ totalRewards }) => {
       <table>
         <thead>
           <tr>
-            <th>Customer Name</th>
+            <th onClick={handleSort} style={{ cursor: 'pointer' }}>Customer Name</th>
             <th>Reward Points</th>
           </tr>
         </thead>
         <tbody>
-          {filteredRewards.map((reward, index) => (
+          {sortedRewards.map((reward, index) => (
             <tr key={index}>
               <td>{reward.name}</td>
               <td style={{ textAlign: 'right' }}>{reward.currency} {reward.points.toFixed(2)}</td>
@@ -42,7 +55,11 @@ const TotalRewardsTable = ({ totalRewards }) => {
 };
 
 TotalRewardsTable.propTypes = {
-  totalRewards: PropTypes.arrayOf(PropTypes.object).isRequired,
+  totalRewards: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    points: PropTypes.number.isRequired,
+    currency: PropTypes.string.isRequired,
+  })).isRequired,
 };
 
 export default TotalRewardsTable;
