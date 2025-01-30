@@ -53,7 +53,7 @@ const TransactionsTable = ({ transactions }) => {
               <td>{transaction.date}</td>
               <td>{transaction.product}</td>
               <td style={{ textAlign: 'right' }}>{transaction.currency} {transaction.price.toFixed(2)}</td>
-              <td style={{ textAlign: 'right' }}>{transaction.currency} {transaction.rewardPoints.toFixed(2)}</td>
+              <td style={{ textAlign: 'right' }}>{transaction.rewardPoints}</td>
             </tr>
           ))}
         </tbody>

@@ -25,7 +25,7 @@ const Driver = () => {
         const data = await fetchData();
         const transactionsWithPoints = calculateRewards(data);
         setTransactions(transactionsWithPoints);
-        setMonthlyRewards(aggregateMonthlyRewards(transactionsWithPoints));
+        setMonthlyRewards(Object.values(aggregateMonthlyRewards(transactionsWithPoints)));
         setTotalRewards(aggregateTotalRewards(transactionsWithPoints));
         log.info('Data processed successfully');
       } catch (err) {
@@ -38,20 +38,6 @@ const Driver = () => {
     getData();
   }, []);
 
-  const handleNewTransaction = async (newTransaction) => {
-    try {
-      log.info('Adding new transaction');
-      const updatedTransactions = [...transactions, newTransaction];
-      const transactionsWithPoints = calculateRewards(updatedTransactions);
-      setTransactions(transactionsWithPoints);
-      setMonthlyRewards(aggregateMonthlyRewards(transactionsWithPoints));
-      setTotalRewards(aggregateTotalRewards(transactionsWithPoints));
-      log.info('New transaction added successfully');
-    } catch (err) {
-      log.error('Error adding new transaction', err);
-      setError(err.message);
-    }
-  };
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;

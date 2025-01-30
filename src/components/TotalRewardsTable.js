@@ -45,7 +45,7 @@ const TotalRewardsTable = ({ totalRewards }) => {
           {sortedRewards.map((reward, index) => (
             <tr key={index}>
               <td>{reward.name}</td>
-              <td style={{ textAlign: 'right' }}>{reward.currency} {reward.points.toFixed(2)}</td>
+              <td style={{ textAlign: 'right' }}>{reward.points}</td>
             </tr>
           ))}
         </tbody>
